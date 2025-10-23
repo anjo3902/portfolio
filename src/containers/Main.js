@@ -21,7 +21,6 @@ import "./Main.scss";
 
 const Main = () => {
   // Start the site in light mode by default (user can toggle to dark)
-  const darkPref = window.matchMedia("(prefers-color-scheme: dark)");
   const [isDark, setIsDark] = useLocalStorage("isDark", false);
   const [isShowingSplashAnimation, setIsShowingSplashAnimation] =
     useState(true);
