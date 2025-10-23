@@ -1,0 +1,33 @@
+{
+  "files": {
+    "main.css": "/portfolio/static/css/main.5ecf1587.css",
+    "main.js": "/portfolio/static/js/main.2fc40c1d.js",
+    "static/media/multimodal offline rag.png": "/portfolio/static/media/multimodal offline rag.8db06ef66cb7bca303d6.png",
+    "static/media/job match alert app.png": "/portfolio/static/media/job match alert app.1bf5456cfb676654ecf6.png",
+    "static/media/Montserrat-Regular.ttf": "/portfolio/static/media/Montserrat-Regular.3cd786652b8a2e9d41f2.ttf",
+    "static/media/job match.jpg": "/portfolio/static/media/job match.0a565597c7fd8702db1e.jpg",
+    "static/media/stthomas-logo.png": "/portfolio/static/media/stthomas-logo.9a5684c621702179f793.png",
+    "static/media/emotion 2.jpg": "/portfolio/static/media/emotion 2.07aaddb0001a03a4f3ef.jpg",
+    "static/media/rag.jpg": "/portfolio/static/media/rag.0d95d4068725910f6594.jpg",
+    "static/media/AirPassengers.jpg": "/portfolio/static/media/AirPassengers.07c7c8075e61a0f58600.jpg",
+    "static/media/BMI-Prediction-Human-Photograph.jpg": "/portfolio/static/media/BMI-Prediction-Human-Photograph.7af2e396430f2769c8d8.jpg",
+    "static/media/emotion classifier.jpg": "/portfolio/static/media/emotion classifier.f60c95afcf69cf8ad851.jpg",
+    "static/media/Agustina.woff": "/portfolio/static/media/Agustina.eb0c59dda4cc308cba96.woff",
+    "static/media/google cert 2.png": "/portfolio/static/media/google cert 2.fe0804f9ec49697dd3f4.png",
+    "static/media/resume.pdf": "/portfolio/static/media/resume.3752b0a60a3c33b71420.pdf",
+    "static/media/email spam detector.png": "/portfolio/static/media/email spam detector.ff9dfa71922f7daf27d1.png",
+    "static/media/git cert.jpeg": "/portfolio/static/media/git cert.7584fb57c2801e21d39a.jpeg",
+    "static/media/manOnTable.svg": "/portfolio/static/media/manOnTable.8f117eb207e57ed8f89d67d595aceb45.svg",
+    "static/media/google cert1.jpeg": "/portfolio/static/media/google cert1.906833aea1a6c53b1482.jpeg",
+    "static/media/contactMailDark.svg": "/portfolio/static/media/contactMailDark.1db650d351729a0f17b4e3104e6a7b7a.svg",
+    "static/media/developerActivity.svg": "/portfolio/static/media/developerActivity.2c0445cae86f4243433a2f5a22b2c031.svg",
+    "static/media/skill.svg": "/portfolio/static/media/skill.35a147662ab0a1d15e579690446e0258.svg",
+    "index.html": "/portfolio/index.html",
+    "main.5ecf1587.css.map": "/portfolio/static/css/main.5ecf1587.css.map",
+    "main.2fc40c1d.js.map": "/portfolio/static/js/main.2fc40c1d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5ecf1587.css",
+    "static/js/main.2fc40c1d.js"
+  ]
+}
