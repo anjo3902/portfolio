@@ -375,7 +375,9 @@ const contactInfo = {
   // Configure an in-site form endpoint. By default it's empty. Recommended: use Formspree or your own server endpoint.
   // Example Formspree: https://formspree.io/f/{form_id}
   contactForm: {
-    endpoint: "/api/contact" // set to your POST endpoint to enable in-site submissions
+    // Use build-time environment variable REACT_APP_CONTACT_ENDPOINT when provided
+    // This allows CI/CD to inject the backend URL (for example, Vercel) during build
+    endpoint: process.env.REACT_APP_CONTACT_ENDPOINT || "/api/contact"
   }
 };
 
