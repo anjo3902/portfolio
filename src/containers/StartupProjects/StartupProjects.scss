@@ -21,10 +21,11 @@
   display: flex;
   flex-direction: column;
   background-color: $lightBackground2;
-  padding: 1.5rem;
+  padding: 1.75rem;
   border-radius: 10px;
   border: 1px solid $lightBorder1;
   justify-content: center;
+  height: 100%;
 }
 .project-card-light {
   box-shadow: $lightBoxShadowDark 0px 10px 30px -15px;
@@ -51,17 +52,61 @@
 }
 .project-image {
   position: relative;
-  height: 250px;
+  height: 200px;
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+.featured-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: linear-gradient(90deg, #ff8a00 0%, #e52e71 100%);
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+  z-index: 5;
+}
+
+.featured-project {
+  border: 2px solid rgba(229,46,113,0.25);
+  transform: translateY(-2px);
+}
+
 .projects-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1rem 1rem;
+  gap: 1.5rem 1.5rem;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 1200px) {
+  .projects-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .projects-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Add bottom spacing so next sections don't sit too close */
+.main#projects {
+  /* stronger spacing to match other sections */
+  padding: 60px 0 100px 0; /* extra bottom space */
+  margin-bottom: 2rem;
+  min-height: calc(100vh - 100px);
+}
+
+/* ensure the projects grid leaves room before the next section */
+.projects-container {
+  margin-bottom: 2rem;
 }
 
 .project-card-footer span.project-tag {

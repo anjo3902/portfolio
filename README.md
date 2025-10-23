@@ -217,9 +217,33 @@ We highly recommend to read through the [Deploying on GitHub Pages](https://crea
 #### Configuring GitHub Actions (Recommended)
 First you should enable, GitHub Actions for the repository you use.
 
+
+### Running the contact server (optional)
+
+This project includes a small Express server to handle contact form submissions and send email via SMTP. To enable it:
+
+- Create a `.env` file in the project root with the following variables:
+
+```
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_SECURE=false
+SMTP_USER=your_smtp_username@example.com
+SMTP_PASS=your_smtp_password_or_app_password
+CONTACT_TO_EMAIL=your_destination_email@example.com
+```
+
+- Install dependencies and run both server and client in development:
+
+```powershell
 The Profile and the Repository information from GitHub is only created at the time of deploy and the site needs to be redeployed if those information needs to be updated. So, a configurable [CRON Job](https://docs.github.com/en/actions/reference/events-that-trigger-workflows#scheduled-events) is setup which deploys your site every week, so that once you update your profile on GitHub it is shown on your portfolio. You can also trigger it manually using `workflow_dispatch` event, see [this guide](https://github.blog/changelog/2020-07-06-github-actions-manual-triggers-with-workflow_dispatch) on how to do that.
 
 - When you are done with the configuration, we highly recommend to read through the [GitHub Actions Configuring a workflow](https://docs.github.com/en/actions/configuring-and-managing-workflows/configuring-a-workflow) docs.
+
+The client will proxy requests to `/api/contact` to the server on port 5000.
+
+If you don't want to run the backend, leave `contactInfo.contactForm.endpoint` empty in `src/portfolio.js` and the form will fall back to `mailto:`.
+
 
 #### Deploying to GitHub Pages
 

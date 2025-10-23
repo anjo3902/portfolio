@@ -4,15 +4,20 @@
   display: flex;
   width: 100%;
   overflow: hidden;
+  align-items: center;
+  /* Try to keep the section within the viewport when navigated to via anchor */
+  min-height: calc(100vh - 100px);
+  padding: 30px 0;
 }
 
 .skills-text-div {
-  margin-left: 50px;
+  margin-left: 30px;
+  max-width: 820px;
 }
 
 .skills-main-div > * {
   flex: 1;
-  margin-bottom: 30px;
+  margin-bottom: 18px;
 }
 
 .skills-image-div > img {
@@ -21,8 +26,9 @@
 }
 
 .skills-heading {
-  font-size: 56px;
+  font-size: 48px;
   font-weight: 400;
+  margin-bottom: 6px;
 }
 .subTitle {
   color: $subTitle;
@@ -31,12 +37,12 @@
 /* Media Query */
 @media (max-width: 1380px) {
   .skills-heading {
-    font-size: 40px;
+    font-size: 36px;
   }
 }
 @media (max-width: 768px) {
   .skills-heading {
-    font-size: 30px;
+    font-size: 26px;
     text-align: center;
   }
   .greeting-text-p {
@@ -51,14 +57,19 @@
     margin: 20px;
   }
   .skills-text {
-    font-size: 16px;
+    font-size: 15px;
   }
   .skills-text-subtitle {
-    font-size: 16px;
+    font-size: 15px;
     text-align: center;
   }
   .skills-image-div {
     /* display: none; */
     order: 2;
   }
+}
+
+/* Make sure anchor navigation offsets for the fixed header */
+#skills {
+  scroll-margin-top: 100px; /* matches header + padding */
 }

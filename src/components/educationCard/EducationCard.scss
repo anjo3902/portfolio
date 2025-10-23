@@ -41,12 +41,15 @@
 }
 
 .education-roundedimg {
-  object-fit: cover;
+  /* Show the full logo without cropping */
+  object-fit: contain;
   margin-right: 2rem;
   width: 6rem;
   height: 6rem;
   box-shadow: 0 0.5rem 1rem $lightBoxShadowDarker;
-  border-radius: 50%;
+  border-radius: 8px; /* slight rounding, not circular */
+  background: transparent;
+  padding: 0.25rem; /* small padding so logos don't touch edges */
 }
 
 .education-card-right {
@@ -60,6 +63,20 @@
   margin: 0px;
   padding-top: 0.8rem;
   line-height: normal;
+}
+
+.education-text-school a.education-link {
+  color: inherit;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.external-link-icon {
+  display: inline-block;
+  vertical-align: middle;
+  color: $titleColor;
 }
 
 .education-text-duration {
@@ -107,6 +124,8 @@
     height: 4rem;
     margin-bottom: 0.5rem;
     margin-right: 0px;
+    border-radius: 6px;
+    padding: 0.15rem;
   }
 }
 
@@ -126,6 +145,8 @@
     height: 4rem;
     margin-bottom: 1rem;
     margin-right: 0;
+    border-radius: 6px;
+    padding: 0.15rem;
   }
   .education-text-bullets > ul {
     max-width: 80%;

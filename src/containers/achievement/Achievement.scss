@@ -15,6 +15,27 @@
   color: $subTitle;
 }
 
+.main#achievements {
+  padding: 80px 0 60px 0; /* extra top spacing to separate from Projects */
+  margin-bottom: 2rem;
+  min-height: calc(100vh - 100px);
+}
+
+/* subtle separator line at the top of Achievements */
+.main#achievements .achievement-header::before {
+  content: "";
+  display: block;
+  height: 1px;
+  width: 100%;
+  background: rgba(0,0,0,0.06);
+  margin-bottom: 18px;
+}
+
+/* make anchor navigation consistent */
+#achievements {
+  scroll-margin-top: 100px;
+}
+
 /* Media Query */
 @media (max-width: 1380px) {
   .achievement-heading {

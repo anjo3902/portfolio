@@ -35,6 +35,14 @@ export default function socialMedia() {
       {socialMediaLinks.gmail ? (
         <a
           href={`mailto:${socialMediaLinks.gmail}`}
+          onClick={(e) => {
+            e.preventDefault();
+            const email = socialMediaLinks.gmail;
+            const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=${encodeURIComponent(
+              email
+            )}`;
+            window.open(gmailUrl, "_blank", "noopener,noreferrer");
+          }}
           className="icon-button google"
           target="_blank"
           rel="noopener noreferrer"

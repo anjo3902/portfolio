@@ -1,123 +1,72 @@
 /* Change this file to get your personal Portfolio */
-
-// To change portfolio colors globally go to the  _globalColor.scss file
-
 import emoji from "react-easy-emoji";
 import splashAnimation from "./assets/lottie/splashAnimation"; // Rename to your file name for custom animation
-
-// Splash Screen
-
 const splashScreen = {
   enabled: true, // set false to disable splash screen
   animation: splashAnimation,
   duration: 2000 // Set animation duration as per your animation
 };
-
-// Summary And Greeting Section
-
 const illustration = {
   animated: true // Set to false to use static SVG
 };
 
 const greeting = {
-  username: "Saad Pasta",
-  title: "Hi all, I'm Saad",
+  username: "Anjo Jaison P",
+  title: "AI/ML & Generative AI Enthusiast",
   subTitle: emoji(
-    "A passionate Full Stack Software Developer 🚀 having an experience of building Web and Mobile applications with JavaScript / Reactjs / Nodejs / React Native and some other cool libraries and frameworks."
+    "Results-driven AI/ML practitioner with expertise in Machine Learning, Deep Learning, NLP, and Generative AI. Skilled in data pre-processing, model optimization, and end-to-end deployment of scalable ML pipelines. Experienced in building real-world applications leveraging Python, LangChain, Hugging Face, Streamlit, PyTorch, TensorFlow to deliver efficient LLM-powered solutions."
   ),
-  resumeLink:
-    "https://drive.google.com/file/d/1ofFdKF_mqscH8WvXkSObnVvC9kK7Ldlu/view?usp=sharing", // Set to empty to hide the button
+  resumeLink: "./src/containers/greeting/resume.pdf", // Local resume file; set empty to hide the button
   displayGreeting: true // Set false to hide this section, defaults to true
 };
 
 // Social Media Links
 
 const socialMediaLinks = {
-  github: "https://github.com/saadpasta",
-  linkedin: "https://www.linkedin.com/in/saadpasta/",
-  gmail: "saadpasta70@gmail.com",
-  gitlab: "https://gitlab.com/saadpasta",
-  facebook: "https://www.facebook.com/saad.pasta7",
-  medium: "https://medium.com/@saadpasta",
-  stackoverflow: "https://stackoverflow.com/users/10422806/saad-pasta",
-  // Instagram, Twitter and Kaggle are also supported in the links!
-  // To customize icons and social links, tweak src/components/SocialMedia
-  display: true // Set true to display this section, defaults to false
+  github: "https://github.com/anjo3902",
+  linkedin: "https://linkedin.com/in/anjo-jaison-p-b0373a249",
+  gmail: "anjojaison3902@gmail.com",
+  display: true // Only show these links
 };
 
 // Skills Section
 
 const skillsSection = {
   title: "What I do",
-  subTitle: "CRAZY FULL STACK DEVELOPER WHO WANTS TO EXPLORE EVERY TECH STACK",
+  subTitle: "Focused on AI/ML, NLP, and building production-ready ML applications",
   skills: [
-    emoji(
-      "⚡ Develop highly interactive Front end / User Interfaces for your web and mobile applications"
-    ),
-    emoji("⚡ Progressive Web Applications ( PWA ) in normal and SPA Stacks"),
-    emoji(
-      "⚡ Integration of third party services such as Firebase/ AWS / Digital Ocean"
-    )
+    emoji("⚡ Deep learning (CNNs, RNNs, Transformers) with PyTorch & TensorFlow"),
+    emoji("⚡ Fine-tuning & evaluating LLMs; prompt engineering"),
+    emoji("⚡ RAG systems: embeddings + vector DBs (Chroma, FAISS) and LangChain"),
+    emoji("⚡ Production ML: preprocessing, tracking, and inference optimization"),
+    emoji("⚡ MLOps basics: monitoring and scalable serving"),
+    emoji("⚡ Prototyping with Streamlit; analysis with pandas & scikit-learn")
   ],
-
   /* Make Sure to include correct Font Awesome Classname to view your icon
 https://fontawesome.com/icons?d=gallery */
 
   softwareSkills: [
-    {
-      skillName: "html-5",
-      fontAwesomeClassname: "fab fa-html5"
-    },
-    {
-      skillName: "css3",
-      fontAwesomeClassname: "fab fa-css3-alt"
-    },
-    {
-      skillName: "sass",
-      fontAwesomeClassname: "fab fa-sass"
-    },
-    {
-      skillName: "JavaScript",
-      fontAwesomeClassname: "fab fa-js"
-    },
-    {
-      skillName: "reactjs",
-      fontAwesomeClassname: "fab fa-react"
-    },
-    {
-      skillName: "nodejs",
-      fontAwesomeClassname: "fab fa-node"
-    },
-    {
-      skillName: "swift",
-      fontAwesomeClassname: "fab fa-swift"
-    },
-    {
-      skillName: "npm",
-      fontAwesomeClassname: "fab fa-npm"
-    },
-    {
-      skillName: "sql-database",
-      fontAwesomeClassname: "fas fa-database"
-    },
-    {
-      skillName: "aws",
-      fontAwesomeClassname: "fab fa-aws"
-    },
-    {
-      skillName: "firebase",
-      fontAwesomeClassname: "fas fa-fire"
-    },
-    {
-      skillName: "python",
-      fontAwesomeClassname: "fab fa-python"
-    },
-    {
-      skillName: "docker",
-      fontAwesomeClassname: "fab fa-docker"
-    }
+    { skillName: "python", fontAwesomeClassname: "fab fa-python" },
+    { skillName: "numpy", fontAwesomeClassname: "fas fa-square-root-alt" },
+    { skillName: "pandas", fontAwesomeClassname: "fas fa-table" },
+    { skillName: "scikit-learn", fontAwesomeClassname: "fas fa-project-diagram" },
+    { skillName: "xgboost", fontAwesomeClassname: "fas fa-bolt" },
+    { skillName: "pytorch", fontAwesomeClassname: "fas fa-brain" },
+    { skillName: "tensorflow", fontAwesomeClassname: "fas fa-robot" },
+    { skillName: "transformers", fontAwesomeClassname: "fas fa-code" },
+    { skillName: "huggingface", fontAwesomeClassname: "fas fa-robot" },
+    { skillName: "langchain", fontAwesomeClassname: "fas fa-code-branch" },
+  { skillName: "llms", fontAwesomeClassname: "fas fa-cogs" },
+  { skillName: "html5", fontAwesomeClassname: "fab fa-html5" },
+  { skillName: "css3", fontAwesomeClassname: "fab fa-css3-alt" },
+  { skillName: "javascript", fontAwesomeClassname: "fab fa-js" },
+  { skillName: "sql", fontAwesomeClassname: "fas fa-database" },
+    { skillName: "faiss", fontAwesomeClassname: "fas fa-search" },
+    { skillName: "chroma", fontAwesomeClassname: "fas fa-database" },
+    { skillName: "streamlit", fontAwesomeClassname: "fas fa-window-maximize" },
+    { skillName: "jupyter", fontAwesomeClassname: "fas fa-book" }
   ],
-  display: true // Set false to hide this section, defaults to true
+  display: true // Show skills section
 };
 
 // Education Section
@@ -126,23 +75,30 @@ const educationInfo = {
   display: true, // Set false to hide this section, defaults to true
   schools: [
     {
-      schoolName: "Harvard University",
-      logo: require("./assets/images/harvardLogo.png"),
-      subHeader: "Master of Science in Computer Science",
-      duration: "September 2017 - April 2019",
-      desc: "Participated in the research of XXX and published 3 papers.",
+      schoolName: "Digital University Kerala, Thiruvananthapuram",
+      logo: require("./assets/images/logo_transparent_bg_caption.png"),
+      subHeader: "M.Sc. in Computer Science with Data Analytics",
+  duration: "AUG 2024 - JUNE 2026",
+      desc: "Focused on advanced data analytics, machine learning, and practical ML pipeline deployment with hands-on projects in Python and Hugging Face.",
       descBullets: [
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+        "Specialization: Data Analytics, Machine Learning, Deep Learning and Generative AI",
+        "Relevant coursework: Advanced Algorithms, Statistical Learning, Big Data Technologies"
       ]
+      ,
+      website: "https://duk.ac.in/"
     },
     {
-      schoolName: "Stanford University",
-      logo: require("./assets/images/stanfordLogo.png"),
-      subHeader: "Bachelor of Science in Computer Science",
-      duration: "September 2013 - April 2017",
-      desc: "Ranked top 10% in the program. Took courses about Software Engineering, Web Security, Operating Systems, ...",
-      descBullets: ["Lorem ipsum dolor sit amet, consectetur adipiscing elit"]
+      schoolName: "St. Thomas College, Calicut University, Thrissur",
+      logo: require("./assets/images/stthomas-logo.png"),
+      subHeader: "B.Sc. in Mathematics with Computer Science",
+      duration: "JUNE 2021 - MAY 2024",
+      desc: "Concentrated on pure and applied mathematics with a strong emphasis on statistics, probability, and mathematical modeling; supplemented with core computer science courses.",
+      descBullets: [
+        "Emphasis: Probability, Statistics, and Mathematical Modelling",
+        "Coursework: Numerical Methods, Discrete Mathematics, Introductory Data Structures"
+      ]
+      ,
+      website: "https://stthomas.ac.in/"
     }
   ]
 };
@@ -153,16 +109,16 @@ const techStack = {
   viewSkillBars: true, //Set it to true to show Proficiency Section
   experience: [
     {
-      Stack: "Frontend/Design", //Insert stack or technology you have experience in
-      progressPercentage: "90%" //Insert relative proficiency in percentage
+      Stack: "Data Analysis",
+      progressPercentage: "90%"
     },
     {
-      Stack: "Backend",
-      progressPercentage: "70%"
+      Stack: "Machine Learning",
+      progressPercentage: "80%"
     },
     {
       Stack: "Programming",
-      progressPercentage: "60%"
+      progressPercentage: "70%"
     }
   ],
   displayCodersrank: false // Set true to display codersrank badges section need to changes your username in src/containers/skillProgress/skillProgress.js:17:62, defaults to false
@@ -174,29 +130,52 @@ const workExperiences = {
   display: true, //Set it to true to show workExperiences Section
   experience: [
     {
-      role: "Software Engineer",
-      company: "Facebook",
-      companylogo: require("./assets/images/facebookLogo.png"),
-      date: "June 2018 – Present",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      role: "Project Lead — Multimodal Offline RAG",
+      company: "Personal Projects",
+      companylogo: require("./assets/images/rag.jpg"),
+      date: "2024 - Present",
+      desc: "Offline multimodal RAG for local semantic search and LLM Q&A.",
       descBullets: [
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+        "Text/audio extraction and preprocessing.",
+        "Embeddings indexed in Chroma for fast retrieval.",
+        "Streamlit demo and reproducible docs."
+      ],
+      tech: ["Python", "PyMuPDF", "Whisper", "Hugging Face", "Chroma", "Streamlit"],
+      footerLink: [
+        { name: "View on GitHub", url: "https://github.com/anjo3902/multimodal_offline_rag" }
       ]
     },
     {
-      role: "Front-End Developer",
-      company: "Quora",
-      companylogo: require("./assets/images/quoraLogo.png"),
-      date: "May 2017 – May 2018",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      role: "Lead Developer — Emotion Classifier",
+      company: "Personal Projects",
+      companylogo: require("./assets/images/emotion 2.jpg"),
+      date: "2023 - Present",
+      desc: "Text emotion classifier (joy/anger/sadness) using embeddings + XGBoost.",
+      descBullets: [
+        "Embedding pipeline and XGBoost model.",
+        "Streamlit demo for live inference.",
+        "Evaluation and docs on GitHub."
+      ],
+      tech: ["Python", "Hugging Face", "XGBoost", "Streamlit", "NLP"],
+      footerLink: [
+        { name: "View on GitHub", url: "https://github.com/anjo3902/Emotion_Classifier" }
+      ]
     },
     {
-      role: "Software Engineer Intern",
-      company: "Airbnb",
-      companylogo: require("./assets/images/airbnbLogo.png"),
-      date: "Jan 2015 – Sep 2015",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      role: "Developer — Job Match Alert",
+      company: "Personal Projects",
+      companylogo: require("./assets/images/job match.jpg"),
+      date: "2023 - Present",
+      desc: "Job scraping and clustering pipeline with dashboard alerts.",
+      descBullets: [
+        "Maintained live jobs dataset.",
+        "TF-IDF + KMeans for clustering.",
+        "Streamlit dashboard for trends and alerts."
+      ],
+      tech: ["Python", "Web Scraping", "TF-IDF", "KMeans", "Streamlit"],
+      footerLink: [
+        { name: "View on GitHub", url: "https://github.com/anjo3902/job_match_alert" }
+      ]
     }
   ]
 };
@@ -206,40 +185,70 @@ To know how to get github key look at readme.md */
 
 const openSource = {
   showGithubProfile: "true", // Set true or false to show Contact profile using Github, defaults to true
-  display: true // Set false to hide this section, defaults to true
+  display: false // Disabled: no open-source section
 };
 
 // Some big projects you have worked on
 
 const bigProjects = {
-  title: "Big Projects",
-  subtitle: "SOME STARTUPS AND COMPANIES THAT I HELPED TO CREATE THEIR TECH",
+  title: "Projects",
+  subtitle: "Public projects from my GitHub — click to view the repository",
   projects: [
     {
-      image: require("./assets/images/saayaHealthLogo.webp"),
-      projectName: "Saayahealth",
-      projectDesc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+      image: require("E:\\Portfolio_Anjo\\developerFolio\\src\\assets\\images\\multimodal offline rag.png"),
+      projectName: "Multimodal Offline RAG System for Cross-Format Search",
+  projectDesc: "Offline multimodal RAG system integrating PDFs, documents, images, and audio for semantic retrieval. Uses PyMuPDF/Whisper for extraction, Hugging Face embeddings stored in Chroma, and a Streamlit UI to provide LLM-powered answers.",
       footerLink: [
-        {
-          name: "Visit Website",
-          url: "http://saayahealth.com/"
-        }
-        //  you can add extra buttons here.
+        { name: "View on GitHub", url: "https://github.com/anjo3902/multimodal_offline_rag" }
+      ],
+      featured: true
+    },
+    {
+      image: require("./assets/images/emotion classifier.jpg"),
+      projectName: "Emotion Classifier App",
+  projectDesc: "Text-based emotion classifier using Hugging Face embeddings and XGBoost for accurate detection of joy, anger, and sadness. Deployed via Streamlit for real-time predictions and visualized model confidence and class distributions.",
+      footerLink: [
+        { name: "View on GitHub", url: "https://github.com/anjo3902/Emotion_Classifier" }
+      ],
+      featured: true
+    },
+    {
+      image: require("E:\\Portfolio_Anjo\\developerFolio\\src\\assets\\images\\job match alert app.png"),
+      projectName: "Job Match Alert App",
+  projectDesc: "Job monitoring and classification system that scrapes listings and maintains a live dataset for analysis. Applies TF-IDF and KMeans for clustering and provides a Streamlit dashboard for trend monitoring and alerts.",
+      footerLink: [
+        { name: "View on GitHub", url: "https://github.com/anjo3902/job_match_alert" }
+      ],
+      featured: true
+    },
+    {
+      image: require("E:\\Portfolio_Anjo\\developerFolio\\src\\assets\\images\\email spam detector.png"),
+      projectName: "Spam Detector App",
+      projectDesc:
+        "NLP pipeline for email/spam detection combining classic features and deep-learning models. Includes preprocessing, model training, and a Streamlit demo for live inference and evaluation.",
+      footerLink: [
+        { name: "View on GitHub", url: "https://github.com/anjo3902/spam-detector" }
       ]
     },
     {
-      image: require("./assets/images/nextuLogo.webp"),
-      projectName: "Nextu",
-      projectDesc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+      image: require("./assets/images/AirPassengers.jpg"),
+      projectName: "LSTM Based Forecasting For AirPassengers",
+  projectDesc: "LSTM-based time-series forecasting on the AirPassengers dataset demonstrating sequence modelling and forecasting. Covers data preprocessing, model training, and evaluation for robust passenger predictions.",
       footerLink: [
-        {
-          name: "Visit Website",
-          url: "http://nextu.se/"
-        }
+        { name: "View on GitHub", url: "https://github.com/anjo3902/AirPassengers-LSTM-Forecast" }
+      ]
+    },
+    {
+      image: require("./assets/images/BMI-Prediction-Human-Photograph.jpg"),
+      projectName: "BMI Prediction App Through Human Photographs",
+      projectDesc:
+        "CNN-based regression model to estimate BMI from human photographs, including preprocessing and augmentation. Focuses on training, evaluation, and considerations around privacy and bias mitigation.",
+      footerLink: [
+        { name: "View on GitHub", url: "https://github.com/anjo3902/BMI-Prediction-Human-Photograph" }
       ]
     }
   ],
-  display: true // Set false to hide this section, defaults to true
+  display: true // Show imported projects
 };
 
 // Achievement Section
@@ -252,50 +261,38 @@ const achievementSection = {
 
   achievementsCards: [
     {
-      title: "Google Code-In Finalist",
-      subtitle:
-        "First Pakistani to be selected as Google Code-in Finalist from 4000 students from 77 different countries.",
-      image: require("./assets/images/codeInLogo.webp"),
-      imageAlt: "Google Code-In Logo",
+      title: "Google Cloud Data Analytics Certificate",
+      subtitle: "Google · 2024",
+      image: require("./assets/images/google cert1.jpeg"),
+      imageAlt: "Google Cloud Data Analytics Certificate",
       footerLink: [
         {
-          name: "Certification",
-          url: "https://drive.google.com/file/d/0B7kazrtMwm5dYkVvNjdNWjNybWJrbndFSHpNY2NFV1p4YmU0/view?usp=sharing"
-        },
-        {
-          name: "Award Letter",
-          url: "https://drive.google.com/file/d/0B7kazrtMwm5dekxBTW5hQkg2WXUyR3QzQmR0VERiLXlGRVdF/view?usp=sharing"
-        },
-        {
-          name: "Google Code-in Blog",
-          url: "https://opensource.googleblog.com/2019/01/google-code-in-2018-winners.html"
+          name: "View Certificate",
+          url: "https://www.linkedin.com/posts/anjo-jaison-p-b0373a249_i-am-excited-to-share-that-i-have-successfully-activity-7349315881924993025-e3wn/"
         }
       ]
     },
     {
-      title: "Google Assistant Action",
-      subtitle:
-        "Developed a Google Assistant Action JavaScript Guru that is available on 2 Billion devices world wide.",
-      image: require("./assets/images/googleAssistantLogo.webp"),
-      imageAlt: "Google Assistant Action Logo",
+      title: "Introduction to Git and GitHub",
+      subtitle: "Google · 2024",
+      image: require("./assets/images/git cert.jpeg"),
+      imageAlt: "Introduction to Git and GitHub",
       footerLink: [
         {
-          name: "View Google Assistant Action",
-          url: "https://assistant.google.com/services/a/uid/000000100ee688ee?hl=en"
+          name: "View Certificate",
+          url: "https://www.coursera.org/account/accomplishments/verify/V6YFGWOFZO7Y"
         }
       ]
     },
-
     {
-      title: "PWA Web App Developer",
-      subtitle: "Completed Certifcation from SMIT for PWA Web App Development",
-      image: require("./assets/images/pwaLogo.webp"),
-      imageAlt: "PWA Logo",
+      title: "Google Cloud Career Launchpad Computing Foundations track",
+      subtitle: "Google · 2025",
+      image: require("./assets/images/google cert 2.png"),
+      imageAlt: "Google Cloud Career Launchpad Computing Foundations Certificate",
       footerLink: [
-        {name: "Certification", url: ""},
         {
-          name: "Final Project",
-          url: "https://pakistan-olx-1.firebaseapp.com/"
+          name: "View Certificate",
+          url: "https://www.linkedin.com/posts/anjo-jaison-p-b0373a249_googlecloud-cloudcomputing-datascience-activity-7386828936963379200-P7Ll/"
         }
       ]
     }
@@ -324,7 +321,7 @@ const blogSection = {
         "React is a JavaScript library for building User Interface. It is maintained by Facebook and a community of individual developers and companies."
     }
   ],
-  display: true // Set false to hide this section, defaults to true
+  display: false // Disabled: no blogs to show
 };
 
 // Talks Sections
@@ -343,7 +340,7 @@ const talkSection = {
       event_url: "https://www.facebook.com/events/2339906106275053/"
     }
   ],
-  display: true // Set false to hide this section, defaults to true
+  display: false // Disabled: no talks to show
 };
 
 // Podcast Section
@@ -372,15 +369,21 @@ const contactInfo = {
   title: emoji("Contact Me ☎️"),
   subtitle:
     "Discuss a project or just want to say hi? My Inbox is open for all.",
-  number: "+92-0000000000",
-  email_address: "saadpasta70@gmail.com"
+  number: "8891123483",
+  email_address: "anjojaison3902@gmail.com"
+  ,
+  // Configure an in-site form endpoint. By default it's empty. Recommended: use Formspree or your own server endpoint.
+  // Example Formspree: https://formspree.io/f/{form_id}
+  contactForm: {
+    endpoint: "/api/contact" // set to your POST endpoint to enable in-site submissions
+  }
 };
 
 // Twitter Section
 
 const twitterDetails = {
-  userName: "twitter", //Replace "twitter" with your twitter username without @
-  display: true // Set true to display this section, defaults to false
+  userName: "",
+  display: false // disabled per user request
 };
 
 const isHireable = false; // Set false if you are not looking for a job. Also isHireable will be display as Open for opportunities: Yes/No in the GitHub footer

@@ -1,87 +1,89 @@
 @import "../../_globalColor";
 
+/* Keep the section consistent with other containers: similar min-height, padding, and responsive behavior */
 .contact-div-main {
-  display: flex;
-}
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 48px;
+  align-items: start;
+  width: 95%;
+  margin: 0 auto;
+  padding: 30px 0; /* matches other sections */
+  min-height: calc(100vh - 100px);
 
-.dark-mode a {
-  color: $textColorDark;
-}
-
-.contact-div-main > * {
-  flex: 1;
-}
-
-.contact-title {
-  font-size: 65px;
-  font-weight: 400;
-}
-
-.contact-detail,
-.contact-detail-email {
-  margin-top: 20px;
-  font-size: 40px;
-  font-weight: 400;
-  color: $subTitle;
-  text-decoration: none;
-}
-
-.contact-detail:hover,
-.contact-detail-email:hover {
-  color: $textColor;
-  text-shadow: 2px 1px 2px $contactDetailHoverTS;
-  transition: all 0.3s;
-}
-
-.contact-subtitle {
-  text-transform: uppercase;
-}
-
-.contact-text-div {
-  margin-top: 1.5rem;
-}
-
-.contact-margin-top {
-  margin-top: 4rem;
-}
-
-.contact-image-div > img {
-  max-width: 100%;
-  height: auto;
-  margin-left: 1.5rem;
-  margin-top: -4rem;
-}
-
-/* Media Query */
-@media (max-width: 1380px), (max-width: 768px) {
-  .contact-title {
+  /* Heading and subtitle sizing to match site */
+  /* Use site's standard heading styles */
+  .contact-title, .heading {
     font-size: 56px;
     font-weight: 400;
-    text-align: center;
-  }
-
-  .contact-title {
-    font-size: 40px;
-    text-align: center;
+    line-height: normal;
+    margin: 0px 0 6px 0;
   }
 
   .contact-subtitle {
-    font-size: 16px;
-    line-height: normal;
-    text-align: center;
+    color: $subTitle;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 13px;
+    margin-bottom: 1rem;
   }
 
   .contact-text-div {
-    text-align: center;
+    margin-top: 1rem;
+    background: transparent; /* keep section background same as others; inner form card will carry visual weight */
+    padding: 0;
+    border-radius: 0;
+  }
+
+  .contact-card {
     margin-top: 1.5rem;
+    background: $lightBackground3;
+    padding: 1.75rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+    /* Ensure text inside the card is readable on light backgrounds */
+    color: $textColor;
   }
 
-  .contact-detail,
-  .contact-detail-email {
-    font-size: 20px;
+  .contact-image-div { display:flex; align-items:center; justify-content:center; }
+  .contact-image-div > img { max-width:100%; height:auto; border-radius:8px; }
+
+  /* Contact form styles (card) */
+  .contact-form { max-width: 900px; }
+  .form-row { display:grid; grid-template-columns:1fr 1fr; gap:1.25rem; }
+  .form-group { display:flex; flex-direction:column; margin-bottom:1rem; }
+  .form-group label { margin-bottom:0.5rem; font-weight:600; font-size:14px; color: $textColor; }
+  .form-group input, .form-group textarea { padding:1rem 1.25rem; border-radius:8px; font-size:16px; resize:vertical; background: rgba(0,0,0,0.03); border: 1px solid $lightBorder1; color: $textColor; outline:none; }
+  /* Make name/email inputs larger and more touch-friendly */
+  .form-row .form-group input { min-height:46px; }
+  .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(0,0,0,0.45); }
+  .form-group input:focus, .form-group textarea:focus { box-shadow: 0 6px 18px rgba(0,0,0,0.06); border-color: rgba(0,0,0,0.14); }
+
+  .form-actions { margin-top: 1rem; }
+  .send-button { background: $buttonColor; color:#fff; padding:12px 24px; border-radius:10px; border:none; cursor:pointer; display:inline-flex; align-items:center; gap:0.6rem; font-weight:700; box-shadow:0 8px 24px rgba(0,0,0,0.08); }
+  .send-button:hover { transform: translateY(-2px); box-shadow: 0 14px 34px rgba(0,0,0,0.10); }
+
+  .error { color:#f87171; margin-top:0.4rem; font-size:13px; }
+  .success { color:#16a34a; background: rgba(16,185,129,0.06); padding:0.6rem 1rem; border-radius:6px; margin-top:0.6rem; }
+
+  /* Responsive - match other containers' breakpoints */
+  @media (max-width: 1380px) {
+    .contact-title, .heading { font-size: 40px; }
   }
 
-  .contact-image-div {
-    display: none;
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    padding: 20px;
+
+    .form-row { grid-template-columns: 1fr; }
+    .contact-image-div { display:none; }
+  .contact-title, .heading { font-size: 30px; text-align: center; }
+    .contact-text-div { margin: 0 auto; }
+    .contact-card { margin: 12px; }
   }
+
 }
+
+/* Anchor offset so clicking header link shows the section fully below the header */
+#contact { scroll-margin-top: 100px; }
+    .contact-title { font-size: 34px; }

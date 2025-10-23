@@ -11,10 +11,16 @@
 
 .experience-container {
   display: flex;
-  width: 90%;
-  padding: 20px 10px;
+  width: 95%;
+  padding: 10px 8px;
   margin: 0px auto;
-  margin-top: 2rem;
+  margin-top: 1.5rem;
+  min-height: calc(100vh - 100px);
+}
+
+/* Anchor offset so clicking header link shows the section fully below the header */
+#experience {
+  scroll-margin-top: 100px;
 }
 
 .experience-container > * {

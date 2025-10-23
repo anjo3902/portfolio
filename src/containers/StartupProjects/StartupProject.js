@@ -34,14 +34,14 @@ export default function StartupProject() {
 
           <div className="projects-container">
             {bigProjects.projects.map((project, i) => {
+              const cardClass = isDark
+                ? "dark-mode project-card project-card-dark"
+                : "project-card project-card-light";
+              const featuredClass = project.featured ? " featured-project" : "";
               return (
                 <div
                   key={i}
-                  className={
-                    isDark
-                      ? "dark-mode project-card project-card-dark"
-                      : "project-card project-card-light"
-                  }
+                  className={cardClass + featuredClass}
                 >
                   {project.image ? (
                     <div className="project-image">
@@ -50,6 +50,9 @@ export default function StartupProject() {
                         alt={project.projectName}
                         className="card-image"
                       ></img>
+                      {project.featured ? (
+                        <div className="featured-badge">Featured</div>
+                      ) : null}
                     </div>
                   ) : null}
                   <div className="project-detail">
