@@ -195,7 +195,7 @@ const bigProjects = {
   subtitle: "Public projects from my GitHub — click to view the repository",
   projects: [
     {
-      image: require("E:\\Portfolio_Anjo\\developerFolio\\src\\assets\\images\\multimodal offline rag.png"),
+      image: require("./assets/images/multimodal offline rag.png"),
       projectName: "Multimodal Offline RAG System for Cross-Format Search",
   projectDesc: "Offline multimodal RAG system integrating PDFs, documents, images, and audio for semantic retrieval. Uses PyMuPDF/Whisper for extraction, Hugging Face embeddings stored in Chroma, and a Streamlit UI to provide LLM-powered answers.",
       footerLink: [
@@ -213,7 +213,7 @@ const bigProjects = {
       featured: true
     },
     {
-      image: require("E:\\Portfolio_Anjo\\developerFolio\\src\\assets\\images\\job match alert app.png"),
+      image: require("./assets/images/job match alert app.png"),
       projectName: "Job Match Alert App",
   projectDesc: "Job monitoring and classification system that scrapes listings and maintains a live dataset for analysis. Applies TF-IDF and KMeans for clustering and provides a Streamlit dashboard for trend monitoring and alerts.",
       footerLink: [
@@ -222,7 +222,7 @@ const bigProjects = {
       featured: true
     },
     {
-      image: require("E:\\Portfolio_Anjo\\developerFolio\\src\\assets\\images\\email spam detector.png"),
+      image: require("./assets/images/email spam detector.png"),
       projectName: "Spam Detector App",
       projectDesc:
         "NLP pipeline for email/spam detection combining classic features and deep-learning models. Includes preprocessing, model training, and a Streamlit demo for live inference and evaluation.",
