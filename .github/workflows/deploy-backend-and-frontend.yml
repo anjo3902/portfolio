@@ -25,18 +25,102 @@ jobs:
     needs: prepare
     runs-on: ubuntu-latest
     if: ${{ secrets.VERCEL_TOKEN != '' }}
+    outputs:
+      vercel_url: ${{ steps.vercel_deploy.outputs.vercel_url }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Deploy to Vercel (if VERCEL_TOKEN present)
+      - name: Deploy to Vercel via REST API (no CLI)
+        id: vercel_deploy
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+          VERCEL_TEAM_ID: ${{ secrets.VERCEL_TEAM_ID }}
+          VERCEL_DEPLOY_NAME: ${{ secrets.VERCEL_DEPLOY_NAME }}
         run: |
-          # Install vercel CLI locally
-          npm i -g vercel
-          # Deploy (this creates a deployment and prints URL)
-          vercel --prod --confirm --token $VERCEL_TOKEN
+          # Ensure Node 18+ is available (setup-node ran in prepare)
+          node -v
+          # Make the script executable
+          chmod +x .github/vercel_deploy.js
+          set +e
+          URL=$(node .github/vercel_deploy.js 2>&1 | tr -d '\r' | tail -n1)
+          EXIT_CODE=$?
+          set -e
+          if [ $EXIT_CODE -ne 0 ] || [ -z "$URL" ]; then
+            echo "Vercel deployment failed or no URL returned. Exit code=$EXIT_CODE, output=$URL"
+            echo "vercel_url=" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+          echo "Deployed to $URL"
+          echo "vercel_url=$URL" >> $GITHUB_OUTPUT
+      - name: Configure Vercel project env vars from GitHub Secrets
+        if: ${{ secrets.VERCEL_TOKEN != '' && secrets.VERCEL_PROJECT_ID != '' }}
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+          VERCEL_TEAM_ID: ${{ secrets.VERCEL_TEAM_ID }}
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_SECURE: ${{ secrets.SMTP_SECURE }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+          CONTACT_TO_EMAIL: ${{ secrets.CONTACT_TO_EMAIL }}
+        run: |
+          echo "Configuring Vercel environment variables (won't print values)"
+          API_BASE="https://api.vercel.com/v9/projects/${VERCEL_PROJECT_ID}/env"
+          if [ -n "$VERCEL_TEAM_ID" ]; then
+            API_BASE="$API_BASE?teamId=$VERCEL_TEAM_ID"
+          fi
+          apt-get update -y || true
+          apt-get install -y jq curl || true
+          set +e
+          set -o pipefail
+          # helper function to create or update a variable
+          set_env() {
+            KEY="$1"; VAL="$2"
+            if [ -z "$VAL" ]; then
+              return
+            fi
+            PAYLOAD=$(jq -n --arg k "$KEY" --arg v "$VAL" '{key:$k, value:$v, target:["production"], type:"encrypted"}')
+            HTTP_CODE=$(curl -s -o /tmp/resp -w "%{http_code}" -X POST "$API_BASE" \
+              -H "Authorization: Bearer $VERCEL_TOKEN" -H "Content-Type: application/json" -d "$PAYLOAD")
+            if [ "$HTTP_CODE" -ge 200 ] && [ "$HTTP_CODE" -lt 300 ]; then
+              echo "$KEY created"
+              return
+            fi
+            # If exists (409) or other, try to update the existing variable
+            if [ "$HTTP_CODE" -eq 409 ] || [ "$HTTP_CODE" -ge 400 ]; then
+              # Find existing id
+              LIST_API="https://api.vercel.com/v9/projects/${VERCEL_PROJECT_ID}/env"
+              if [ -n "$VERCEL_TEAM_ID" ]; then
+                LIST_API="$LIST_API?teamId=$VERCEL_TEAM_ID"
+              fi
+              ID=$(curl -s -H "Authorization: Bearer $VERCEL_TOKEN" "$LIST_API" | jq -r --arg k "$KEY" '.env[] | select(.key==$k) | .id' | head -n1)
+              if [ -n "$ID" ] && [ "$ID" != "null" ]; then
+                UPDATE_API="https://api.vercel.com/v9/projects/${VERCEL_PROJECT_ID}/env/$ID"
+                if [ -n "$VERCEL_TEAM_ID" ]; then
+                  UPDATE_API="$UPDATE_API?teamId=$VERCEL_TEAM_ID"
+                fi
+                U_PAYLOAD=$(jq -n --arg v "$VAL" '{value:$v}')
+                U_CODE=$(curl -s -o /dev/null -w "%{http_code}" -X PATCH "$UPDATE_API" -H "Authorization: Bearer $VERCEL_TOKEN" -H "Content-Type: application/json" -d "$U_PAYLOAD")
+                if [ "$U_CODE" -ge 200 ] && [ "$U_CODE" -lt 300 ]; then
+                  echo "$KEY updated"
+                else
+                  echo "Failed to update $KEY (code $U_CODE)"
+                fi
+              else
+                echo "Could not find existing $KEY to update (HTTP $HTTP_CODE)"
+              fi
+            fi
+          }
+
+          set_env SMTP_HOST "$SMTP_HOST"
+          set_env SMTP_PORT "$SMTP_PORT"
+          set_env SMTP_SECURE "$SMTP_SECURE"
+          set_env SMTP_USER "$SMTP_USER"
+          set_env SMTP_PASS "$SMTP_PASS"
+          set_env CONTACT_TO_EMAIL "$CONTACT_TO_EMAIL"
+          set -e
 
   build-and-deploy-frontend:
     needs: [prepare, deploy-backend]
@@ -53,10 +137,25 @@ jobs:
       - name: Install
         run: npm ci
 
-      - name: Build with BACKEND_URL
+      - name: Build with BACKEND_URL or Vercel URL
         env:
-          REACT_APP_CONTACT_ENDPOINT: ${{ secrets.BACKEND_URL }}
+          # Prefer the auto-captured Vercel URL from the deploy-backend job, fall back to BACKEND_URL secret
+          RAW_BACKEND_URL: ${{ needs.deploy-backend.outputs.vercel_url }}
+          FALLBACK_BACKEND_URL: ${{ secrets.BACKEND_URL }}
         run: |
+          # Decide which backend URL to use
+          if [ -n "$RAW_BACKEND_URL" ]; then
+            SELECTED_BACKEND_URL="$RAW_BACKEND_URL"
+          else
+            SELECTED_BACKEND_URL="$FALLBACK_BACKEND_URL"
+          fi
+          echo "Selected backend URL: $SELECTED_BACKEND_URL"
+          if [ -n "$SELECTED_BACKEND_URL" ]; then
+            export REACT_APP_CONTACT_ENDPOINT="$SELECTED_BACKEND_URL/api/contact"
+            echo "Using REACT_APP_CONTACT_ENDPOINT=$REACT_APP_CONTACT_ENDPOINT"
+          else
+            echo "No backend URL available; build will use default /api/contact"
+          fi
           npm run build
 
       - name: Deploy to GitHub Pages
