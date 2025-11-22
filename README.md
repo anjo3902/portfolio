@@ -249,7 +249,8 @@ If you don't want to run the backend, leave `contactInfo.contactForm.endpoint` e
 
 This section guides you to deploy your portfolio on GitHub pages.
 
-- Navigate to `package.json` and enter your domain name instead of `https://developerfolio.js.org/` in `homepage` variable. For example, if you want your site to be `https://<your-username>.github.io/developerFolio`, add the same to the homepage section of `package.json`.
+- If you're deploying to GitHub Pages, set `homepage` to your GitHub Pages URL (e.g. `https://<your-username>.github.io/portfolio`).
+- If you're deploying to a root-hosted platform like Vercel or Netlify, you can set `homepage` to `.` (dot) to make all asset paths relative. This avoids 404s when the app's files are served from the root path.
 
 - In short you can also add `/devloperFolio` to `package.json` as both are exactly same. Upon doing so, you tell `create-react-app` to add the path assets accordingly.
 
