@@ -59,6 +59,21 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/FortAwesome/Font-Awesome@5.15.4/css/all.min.css">
 
+    <!-- Unregister previously installed service workers to avoid stale caches -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        try {
+          navigator.serviceWorker.getRegistrations().then(function (regs) {
+            regs.forEach(function (r) {
+              r.unregister();
+            });
+          });
+        } catch (e) {
+          /* ignore */
+        }
+      }
+    </script>
+
 
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
