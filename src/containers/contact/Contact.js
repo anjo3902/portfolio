@@ -44,15 +44,21 @@ export default function Contact() {
         body: JSON.stringify(payload)
       })
         .then((res) => {
-          if (!res.ok) throw new Error("Network response was not ok");
-          return res.json().catch(() => ({}));
+          // Attempt to parse server response for error info even if not ok
+          return res.json().then((data) => ({ ok: res.ok, data })).catch(() => ({ ok: res.ok, data: {} }));
         })
-        .then(() => {
+        .then(({ ok, data }) => {
+          if (!ok) {
+            const errMsg = data && data.error ? (data.error + (data.details ? `: ${data.details}` : '')) : 'Network response was not ok';
+            throw new Error(errMsg);
+          }
           setStatus({ loading: false, success: "Message sent. Thank you!", error: null });
           setForm({ name: "", email: "", message: "" });
         })
         .catch((err) => {
-          setStatus({ loading: false, success: null, error: "Failed to send message. Please try again later." });
+          // Surface the server-provided message when available
+          const errText = (err && err.message) || "Failed to send message. Please try again later.";
+          setStatus({ loading: false, success: null, error: errText });
         });
     } else {
       // No endpoint provided: fallback to mailto but open in same tab as last resort

@@ -1,6 +1,16 @@
 const nodemailer = require('nodemailer');
 
 module.exports = async (req, res) => {
+  // Add CORS headers so the API can be called from other hosts (e.g. gh-pages)
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+  if (req.method === 'OPTIONS') {
+    // Handle preflight request
+    res.status(204).end();
+    return;
+  }
   if (req.method !== 'POST') {
     res.status(405).json({ error: 'Method not allowed' });
     return;
@@ -48,9 +58,9 @@ module.exports = async (req, res) => {
 
     const info = await transporter.sendMail(mailOptions);
     console.log('Message sent: %s', info.messageId);
-    res.status(200).json({ success: true });
+    res.status(200).json({ success: true, messageId: info.messageId });
   } catch (err) {
     console.error('Error sending email', err);
-    res.status(500).json({ error: 'Failed to send email' });
+    res.status(500).json({ error: 'Failed to send email', details: err.message });
   }
 };

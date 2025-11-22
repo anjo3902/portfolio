@@ -59,9 +59,8 @@ app.post("/api/contact", async (req, res) => {
       html: `<p><strong>From:</strong> ${name} &lt;${email}&gt;</p><p>${message.replace(/\n/g, "<br/>")}</p>`
     };
 
-    await transporter.sendMail(mailOptions);
-
-    return res.json({ success: true });
+    const info = await transporter.sendMail(mailOptions);
+    return res.json({ success: true, messageId: info.messageId });
   } catch (err) {
     console.error("Error sending email:", err);
     return res.status(500).json({ error: "Failed to send email" });
